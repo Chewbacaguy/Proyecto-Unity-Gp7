@@ -32,7 +32,7 @@ public class AgentController : MonoBehaviour
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(data);
             www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-            www.downloadHandler = (DownloadHandler)new DewloadHandlerBuffer();
+            www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
 
             www.SetRequestHeader("Content-Type", "application/json"); 
             yield return www.SendWebRequest(); //Talk to python es el run de python 
