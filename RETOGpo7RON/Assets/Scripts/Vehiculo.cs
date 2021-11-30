@@ -7,6 +7,6 @@ using UnityEngine;
 public class Vehiculo 
 {
     public int id;
-    public float spawnPointX;
-    public float spawnPointZ;
+    public float coordX;
+    public float coordZ;
 }
