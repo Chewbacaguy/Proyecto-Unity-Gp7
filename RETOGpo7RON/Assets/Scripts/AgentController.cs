@@ -97,7 +97,7 @@ public class AgentController : MonoBehaviour
         Debug.Log(agents.Length);
 
 #if UNITY_EDITOR
-        //string call = "hi";
+        
         Vector3 fakePos = new Vector3(3.44f, 0, -15.707f);
         string json = EditorJsonUtility.ToJson(fakePos);
         //StartCoruoutine(SendData(call));
