@@ -1,68 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 
-public class JsonReader : MonoBehaviour
-{
-    List<List<Vector3>> positions;
-    public GameObject agent1Prefab;
-    public GameObject agent2Prefab;
-    public GameObject agent3Prefab;
-    public GameObject agent4Prefab;
-    public GameObject agent5Prefab;
-    //public string json;
-    private string jsonString = Application.streamingAssetsPath + "Resources/results.json";
 
+public class JsonReader : MonoBehaviour{
+
+    public TextAsset jsonFile;
+    public GameObject prefab;
+
+    [System.Serializable]
+    public class Vehicle{
+
+        public int id;
+        public double spawnPointX;
+        public double spawnPointZ;
+
+    }
+
+    [System.Serializable]
+    public class VehicleList{
+
+        public Vehicle[] Vehicle;
+
+    }
+
+    public VehicleList myVehicleList = new VehicleList();
 
 
     void Start()
     {
-        CreateFromJSON(jsonString);
+        
+        myVehicleList = JsonUtility.FromJson<VehicleList>(jsonFile.text);
+
+        double coordX = myVehicleList[0];
+        double coordZ = myVehicleList[0].spawnPointZ;
+
+        Instantiate(prefab, Vector3(coordX, 1, coordZ), Quaternion.identity);
+
     }
-
-    public static Vehiculo CreateFromJSON(string jsonString)
-    {
-        return JsonUtility.FromJson<Vehiculo>(jsonString);
-    }
-
-
-/*
-    void Start()
-    {
-        int numOfAgents = 10;
-        agents = new GameObject[numOfAgents];
-        json = File.ReadAllText(Application.dataPath + "Resources/results.json");
-        var data = JSON.Parse(json);
-        //Vehiculos vehiculoEnJson = JsonUtility.FromJson<Vehiculos>(json_contents);
-
-
-        for(int i = 0; i < numOfAgents; i++)
-        {
-            if (vehiculo.id == 1)
-            {
-                vehiculo = Instantiate(agent1Prefab, Vector3(vehiculo.coordX, 1, vehiculo.coordZ), Quaternion.identity);
-            }
-            else if (vehiculo.id == 2)
-            {
-                vehiculo = Instantiate(agent2Prefab, Vector3(vehiculo.coordX, 1, vehiculo.coordZ), Quaternion.identity);
-            }
-            else if (vehiculo.id == 3)
-            {
-                vehiculo = Instantiate(agent3Prefab, Vector3(vehiculo.coordX, 1, vehiculo.coordZ), Quaternion.identity);
-            }
-            else if (vehiculo.id == 4)
-            {
-                vehiculo = Instantiate(agent4Prefab, Vector3(vehiculo.coordX, 1, vehiculo.coordZ), Quaternion.identity);
-            }
-            else if (vehiculo.id == 5)
-            {
-                vehiculo = Instantiate(agent5Prefab, Vector3(vehiculo.coordX, 1, vehiculo.coordZ), Quaternion.identity);
-            }
-
-
-        }
-      */
 
 }
 
