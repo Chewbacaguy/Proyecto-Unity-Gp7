@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step: 0
-  speed: 4
+  speed: 5
   jsonFile: {fileID: 4900000, guid: 4184e40c016204639820e60e0f2baa7f, type: 3}
   prefab: {fileID: 420152}
   endpoint: {x: 0, y: 0, z: 0}
@@ -125,7 +125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9006a76b97efe456881c94802d703c7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

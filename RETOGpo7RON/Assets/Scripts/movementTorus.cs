@@ -69,6 +69,7 @@ public class movementTorus : MonoBehaviour
         //PositionChange();
         if(transform.position == endpoint){
 
+            Instantiate(gameObject, new Vector3(myVehicleList.Vehicle[2].coordX, 1, myVehicleList.Vehicle[2].coordZ), Quaternion.Euler(-90, 0, 0));
             Destroy(gameObject);
 
         }

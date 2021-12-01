@@ -70,8 +70,9 @@ public class movementMoto : MonoBehaviour
         //PositionChange();
         if(transform.position == endpoint){
 
+            Instantiate(gameObject, new Vector3(myVehicleList.Vehicle[1].coordX, 2, myVehicleList.Vehicle[1].coordZ), Quaternion.Euler(2, 180, 100));
             Destroy(gameObject);
-
+            
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);

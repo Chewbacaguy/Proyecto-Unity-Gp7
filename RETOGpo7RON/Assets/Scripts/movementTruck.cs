@@ -73,7 +73,9 @@ public class movementTruck : MonoBehaviour
         //PositionChange();
         if(transform.position == endpoint){
 
+            Instantiate(gameObject, new Vector3(myVehicleList.Vehicle[0].coordX, 1, myVehicleList.Vehicle[0].coordZ), Quaternion.Euler(90, 180, 0));
             Destroy(gameObject);
+            
 
         }
 

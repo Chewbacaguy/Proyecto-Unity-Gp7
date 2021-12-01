@@ -69,6 +69,7 @@ public class movement_car3 : MonoBehaviour
         //PositionChange();
         if(transform.position == endpoint){
 
+            Instantiate(gameObject, new Vector3(myVehicleList.Vehicle[5].coordX, 1.5f, myVehicleList.Vehicle[5].coordZ), Quaternion.Euler(270, 210, 0));
             Destroy(gameObject);
 
         }
