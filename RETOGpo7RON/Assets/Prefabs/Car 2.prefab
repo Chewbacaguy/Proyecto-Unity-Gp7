@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step: 0
-  speed: 7
+  speed: 8
   jsonFile: {fileID: 4900000, guid: 4184e40c016204639820e60e0f2baa7f, type: 3}
   prefab: {fileID: 424520}
   endpoint: {x: 0, y: 0, z: 0}
