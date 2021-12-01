@@ -16,8 +16,12 @@ public class JsonReader : MonoBehaviour{
     public class Vehicle{
 
         public int id;
-        public float spawnPointX;
-        public float spawnPointZ;
+        public float coordX;
+        public float coordZ;
+        public float nextPX;
+        public float nextPZ;
+        public float endPX;
+        public float endPZ;
 
     }
 
@@ -36,17 +40,27 @@ public class JsonReader : MonoBehaviour{
     {
         
         myVehicleList = JsonUtility.FromJson<VehicleList>(jsonFile.text);
-        spawnPoint = new Vector3(myVehicleList.Vehicle[0].spawnPointX, 1, myVehicleList.Vehicle[0].spawnPointZ);
-        Instantiate(prefab, spawnPoint, Quaternion.Euler(90, 180, 0));
+        for(int i = 0; i< 4; i++)
+        {
+            Instantiate(prefab, new Vector3(myVehicleList.Vehicle[i].coordX, 1, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(90, 180, 0));
 
 
-
-    }
-
-    void Update(){
-
+        }
 
     }
+
+
+    void Update()
+    {
+        
+        for (int i = 0; i < 4; i++)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, endpoint, speed * Time.deltaTime);
+           
+
+        }
+    }
+
 
 }
 

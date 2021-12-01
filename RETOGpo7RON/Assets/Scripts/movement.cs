@@ -16,8 +16,12 @@ public class movement : MonoBehaviour
     public class Vehicle{
 
         public int id;
-        public float spawnPointX;
-        public float spawnPointZ;
+        public float coordX;
+        public float coordZ;
+        public float nextPX;
+        public float nextPZ;
+        public float endPX;
+        public float endPZ;
 
     }
 
@@ -32,15 +36,22 @@ public class movement : MonoBehaviour
 
     void PositionChange()
     {
-        target = new Vector3(myVehicleList.Vehicle[step].spawnPointX, 1, myVehicleList.Vehicle[step].spawnPointZ);
+      
+        target = new Vector3(myVehicleList.Vehicle[0].coordX, 1, myVehicleList.Vehicle[0].coordZ);
     }
+
+  /*  void Stop()
+    {
+
+        target = new Vector3(myVehicleList.Vehicle[0].nextPX, 1, myVehicleList.Vehicle[0].nextPZ);
+    }*/
 
     // Start is called before the first frame update
     void Start()
     {
 
         myVehicleList = JsonUtility.FromJson<VehicleList>(jsonFile.text);
-        PositionChange();
+        //PositionChange();
         
     }
 
@@ -48,16 +59,18 @@ public class movement : MonoBehaviour
     void Update()
     {
        
-        step++;
-        PositionChange();
+        
+        //PositionChange();
         if(transform.position == target){
 
             Destroy(gameObject);
 
         }
-        transform.position =  Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+/*
+        endpoint = new Vector3(myVehicleList.Vehicle[0].endPX, 1, myVehicleList.Vehicle[0].endPZ);
+        transform.position = Vector3.MoveTowards(transform.position, endpoint, speed * Time.deltaTime);
+*/
 
- 
     }
 
 }
