@@ -10,13 +10,14 @@ public class JsonReader : MonoBehaviour{
 
     public TextAsset jsonFile;
     public GameObject prefab;
+    public Vector3 spawnPoint;
 
     [System.Serializable]
     public class Vehicle{
 
         public int id;
-        public double spawnPointX;
-        public double spawnPointZ;
+        public float spawnPointX;
+        public float spawnPointZ;
 
     }
 
@@ -30,15 +31,20 @@ public class JsonReader : MonoBehaviour{
     public VehicleList myVehicleList = new VehicleList();
 
 
+
     void Start()
     {
         
         myVehicleList = JsonUtility.FromJson<VehicleList>(jsonFile.text);
+        spawnPoint = new Vector3(myVehicleList.Vehicle[0].spawnPointX, 1, myVehicleList.Vehicle[0].spawnPointZ);
+        Instantiate(prefab, spawnPoint, Quaternion.Euler(90, 180, 0));
 
-        double coordX = myVehicleList[0];
-        double coordZ = myVehicleList[0].spawnPointZ;
 
-        Instantiate(prefab, Vector3(coordX, 1, coordZ), Quaternion.identity);
+
+    }
+
+    void Update(){
+
 
     }
 
