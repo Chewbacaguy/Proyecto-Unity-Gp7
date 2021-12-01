@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4836300025367146977}
   - component: {fileID: 7996267853908304237}
   - component: {fileID: 8854274914215436975}
+  - component: {fileID: -1615212832269626667}
   m_Layer: 0
   m_Name: motoTron 1
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4836300025367146976}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1.0577629, y: 2.0259895, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13200,7 +13201,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -13217,3 +13218,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1615212832269626667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4836300025367146976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202c80848a9d24bfb8c82ab297fcfa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  step: 0
+  speed: 5
+  jsonFile: {fileID: 4900000, guid: 4184e40c016204639820e60e0f2baa7f, type: 3}
+  prefab: {fileID: 4836300025367146989}
+  endpoint: {x: 0, y: 0, z: 0}
+  stop: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
+  myVehicleList:
+    Vehicle: []

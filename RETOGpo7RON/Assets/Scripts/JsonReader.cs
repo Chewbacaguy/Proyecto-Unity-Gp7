@@ -9,7 +9,12 @@ using UnityEngine.Assertions;
 public class JsonReader : MonoBehaviour{
 
     public TextAsset jsonFile;
-    public GameObject prefab;
+    public GameObject truck;
+    public GameObject moto;
+    public GameObject torus;
+    public GameObject car1;
+    public GameObject car2;
+    public GameObject car3;
     public Vector3 spawnPoint;
 
     [System.Serializable]
@@ -40,10 +45,32 @@ public class JsonReader : MonoBehaviour{
     {
         
         myVehicleList = JsonUtility.FromJson<VehicleList>(jsonFile.text);
-        for(int i = 0; i< 4; i++)
+        for(int i = 0; i< 6; i++)
         {
-            Instantiate(prefab, new Vector3(myVehicleList.Vehicle[i].coordX, 1, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(90, 180, 0));
+            if(i == 0){
+                
+                Instantiate(truck, new Vector3(myVehicleList.Vehicle[i].coordX, 1, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(90, 180, 0));
+            }
 
+            else if(i == 1){
+                Instantiate(moto, new Vector3(myVehicleList.Vehicle[i].coordX, 2, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(2, 180, 100));
+            }
+
+            else if(i == 2){
+                Instantiate(torus, new Vector3(myVehicleList.Vehicle[i].coordX, 1, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(-90, 0, 0));
+            }
+
+            else if(i == 3){
+                Instantiate(car1, new Vector3(myVehicleList.Vehicle[i].coordX, 1, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(270, 180, 90));
+            }
+            
+            else if(i == 4){
+                Instantiate(car2, new Vector3(myVehicleList.Vehicle[i].coordX, 1.5f, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(270, 210, 0));
+            }
+
+            else if(i == 5){
+                Instantiate(car3, new Vector3(myVehicleList.Vehicle[i].coordX, 1.5f, myVehicleList.Vehicle[i].coordZ), Quaternion.Euler(270, 210, 0));
+            }
 
         }
 
@@ -52,13 +79,13 @@ public class JsonReader : MonoBehaviour{
 
     void Update()
     {
-        
+        /*
         for (int i = 0; i < 4; i++)
         {
             transform.position = Vector3.MoveTowards(transform.position, endpoint, speed * Time.deltaTime);
            
 
-        }
+        }*/
     }
 
 

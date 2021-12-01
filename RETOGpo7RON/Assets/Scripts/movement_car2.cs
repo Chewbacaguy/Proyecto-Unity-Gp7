@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class movement_car2 : MonoBehaviour
 {
-
     public int step = 0;
     private float t;
     public float speed = 0.5f;
     public TextAsset jsonFile;
     public Transform prefab;
+    public Vector3 endpoint;
+    public Vector3 stop;
     public Vector3 target;
 
     [System.Serializable]
@@ -33,20 +34,13 @@ public class movement : MonoBehaviour
     }
 
     public VehicleList myVehicleList = new VehicleList();
-
+/*
     void PositionChange()
     {
       
         target = new Vector3(myVehicleList.Vehicle[0].coordX, 1, myVehicleList.Vehicle[0].coordZ);
-    }
-
-  /*  void Stop()
-    {
-
-        target = new Vector3(myVehicleList.Vehicle[0].nextPX, 1, myVehicleList.Vehicle[0].nextPZ);
     }*/
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -58,19 +52,27 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        stop = new Vector3(myVehicleList.Vehicle[4].nextPX, 1, myVehicleList.Vehicle[4].nextPZ);
+        endpoint = new Vector3(myVehicleList.Vehicle[4].endPX, 1, myVehicleList.Vehicle[4].endPZ);
         
+        if((transform.position[0] + 2 > stop[0]) && ChangeColor.state == true){
+
+            target = stop;
+
+        }
+
+        else{
+
+            target = endpoint;
+
+        }
         //PositionChange();
-        if(transform.position == target){
+        if(transform.position == endpoint){
 
             Destroy(gameObject);
 
         }
-/*
-        endpoint = new Vector3(myVehicleList.Vehicle[0].endPX, 1, myVehicleList.Vehicle[0].endPZ);
-        transform.position = Vector3.MoveTowards(transform.position, endpoint, speed * Time.deltaTime);
-*/
 
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
-
 }
